@@ -14,7 +14,7 @@ length=1000
 time=3600
 
 sizex=20
-sizet=2
+sizet=10
 
 hint=1
 hinf=2
@@ -64,7 +64,11 @@ plt.plot(range(len(v[:,0])),v[:,40])
 
 st.pyplot(fig)
 
+fig=plt.figure()
+
 plt.plot(range(len(h[:,0])),h[:,40])
+
+st.pyplot(fig)
         
 
 
