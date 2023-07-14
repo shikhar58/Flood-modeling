@@ -4,8 +4,10 @@
 import numpy as np
 
 import streamlit as st
-
+import matplotlib
 import matplotlib.pyplot as plt
+
+#matplotlib.use('TkAgg')
 
 
 length=1000
@@ -60,7 +62,24 @@ def numericalmodel(hint,vint,hinf,vinf,houtf,voutf):
 def plottimeatonex(h,v,xtoplot):
     fig=plt.figure()
     plt.plot(range(len(v[:,0])),v[:,int(xtoplot/sizex)])
-    plt.show()
+    
+    st.pyplot(fig)
+    plt.clf()
+    fig=plt.figure()
+    plt.plot(range(len(h[:,0])),h[:,int(xtoplot/sizex)])
+    
+    st.pyplot(fig)
+    plt.clf()
+
+def plotxatonetime(h,v,timetoplot):
+    fig=plt.figure()
+    plt.plot(range(len(v[0,:])),v[int(timetoplot/sizet),:])
+
+    st.pyplot(fig)
+    plt.clf()
+    fig=plt.figure()
+    plt.plot(range(len(h[0,:])),h[int(timetoplot/sizet),:])
+
     st.pyplot(fig)
     plt.clf()
 
@@ -113,7 +132,6 @@ def main():
     plottimeatonex(hr,vr,chosenx)
             
 
-        
 
 
 if __name__=="__main__":

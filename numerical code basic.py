@@ -68,3 +68,75 @@ plt.plot(range(len(h[:,0])),h[:,40])
 
 
 st.pyplot(fig)
+
+
+"""
+# Add a slider widget using the st.slider function
+selected_value = st.slider("Select a Range", min_value, max_value, initial_value)
+
+
+
+# Display the selected range values
+st.write(f"Selected Value: {selected_value}")
+
+headerSection=st.container()
+
+mainsection=st.container()
+
+with headerSection:
+    st.title("Streamlit")
+
+"""
+        
+
+st.title("temporal evolution of water velocity and height at a distance")
+
+chosenx = st.slider("Select a distance", 0, 1000, 500)
+    
+status_plott=st.button("plot temporal evolution")
+
+if status_plott:
+    plottimeatonex(hr,vr,chosenx)
+    
+st.title("spatial evolution of water velocity and height at a time")
+
+chosent = st.slider("Select a distance", 0, 3600, 1800)
+
+status_plotx=st.button("plot spatial evolution")
+
+if status_plotx:
+    plotxatonetime(hr,vr,chosent)
+
+
+            
+def plottimeatonex(h,v,xtoplot):
+    fig=plt.figure()
+    plt.plot(range(len(v[:,0])),v[:,int(xtoplot/sizex)])
+    plt.show()
+    st.pyplot(fig)
+    plt.clf()
+    fig=plt.figure()
+    plt.plot(range(len(h[:,0])),h[:,int(xtoplot/sizex)])
+    plt.show()
+    st.pyplot(fig)
+    plt.clf()
+
+def plotxatonetime(h,v,timetoplot):
+    fig=plt.figure()
+    plt.plot(range(len(v[0,:])),v[int(timetoplot/sizet),:])
+    st.pyplot(fig)
+    plt.clf()
+    fig=plt.figure()
+    plt.plot(range(len(h[0,:])),h[int(timetoplot/sizet),:])
+    st.pyplot(fig)
+    plt.clf()
+
+
+        st.title("spatial evolution of water velocity and height at a time")
+        
+        chosent = st.slider("Select a distance", 0, 3600, 1800)
+        
+        status_plotx=st.button("plot spatial evolution")
+        
+        if status_plotx:
+            plotxatonetime(hr,vr,chosent)        
